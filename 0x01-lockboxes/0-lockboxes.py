@@ -5,16 +5,15 @@
 def canUnlockAll(boxes):
     """  """
     unlocked_box = [boxes[0]]
-    box_size = len(boxes)
     keys = [key for key in boxes[0]]
 
-    for i in range(0, box_size):
+    for i in range(0, len(boxes)):
         for key_ in keys:
             if key_ < len(boxes):
                 if boxes[key_] not in unlocked_box:
-                    for key_ in boxes[key_]:
-                        if key_ not in keys:
-                            keys.append(key_)
+                    for key__ in boxes[key_]:
+                        if key__ not in keys:
+                            keys.append(key__)
                     unlocked_box.append(boxes[key_])
     boxes.sort()
     unlocked_box.sort()
