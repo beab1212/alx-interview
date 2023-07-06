@@ -4,6 +4,10 @@
 
 def canUnlockAll(boxes):
     """  """
+    if len(boxes) == 0:
+        return False
+    if len(boxes) == 1:
+        return True
     unlocked_box = [boxes[0]]
     keys = [key for key in boxes[0]]
 
