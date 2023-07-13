@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-""" MINOPRATION """
+""" MINOPRATION Calculate minimum operations """
 
 
-def minOperations(n: int) -> int:
+def minOperations(n):
     """ Calculate minimum operations to copy-all and past to get
         length of n
         Args:
