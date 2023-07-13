@@ -12,7 +12,7 @@ def minOperations(n):
     """
     number_oprations = 0
     minimum_opration = 2
-    while > 1:
+    while n > 1:
         while n % minimum_opration == 0:
             number_oprations += minimum_opration
             n /= minimum_opration
