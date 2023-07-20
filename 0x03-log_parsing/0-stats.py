@@ -4,37 +4,49 @@
 import sys
 
 
-file__size, count = 0, 0
-codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
-stats = {key: 0 for key in codes}
+def display_message(codes, file_size):
+    """
+    """
+    print("File size:", file_size)
+    for k, v in sorted(codes.items()):
+        if v != 0:
+            print(f"{k}: {v}")
 
 
-def display_stats(stats, file_size):
-    """ """
-    print("File size: {:d}".format(file__size))
-    for key, value in sorted(stats.items()):
-        if v:
-            print("{}: {}".format(key, value))
+def main():
+    """
+    """
+    file_size = 0
+    count_lines = 0
+    codes = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0,
+             "404": 0, "405": 0, "500": 0}
 
-
-if __name__ == '__main__':
     try:
         for line in sys.stdin:
-            count += 1
-            data = line.split()
-            try:
-                status_num = data[-2]
-                if status_num in stats:
-                    stats[status_num] += 1
-            except BaseException:
-                pass
-            try:
-                file__size += int(data[-1])
-            except BaseException:
-                pass
-            if count % 10 == 0:
-                display_stats(stats, file__size)
-        display_stats(stats, file__size)
+            parsed_line = line.split()
+
+            if len(parsed_line) >= 7:
+                status_code = parsed_line[-2]
+                if status_code in codes:
+                    codes[status_code] += 1
+
+                try:
+                    file_size += int(parsed_line[-1])
+                except ValueError:
+                    pass
+
+                count_lines += 1
+
+                if count_lines == 10:
+                    display_message(codes, file_size)
+                    count_lines = 0
+
     except KeyboardInterrupt:
-        display_stats(stats, file__size)
-        raise
+        pass
+
+    finally:
+        display_message(codes, file_size)
+
+
+if __name__ == "__main__":
+    main()
