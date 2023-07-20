@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+""" cript that reads stdin line by line and computes metrics: """
 
 import sys
 
@@ -10,6 +10,7 @@ stats = {key: 0 for key in codes}
 
 
 def display_stats(stats, file_size):
+    """ """
     print("File size: {:d}".format(file__size))
     for key, value in sorted(stats.items()):
         if v:
