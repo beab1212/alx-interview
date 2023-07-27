@@ -1,17 +1,19 @@
 #!/usr/bin/python3
-""" """
+""" validUTF8 """
+
+
 def validUTF8(data):
     """validUTF8
-    	Args:
-    		data (list): 
-    	Returns:
-    		True if data is valid UTF-8 encoding else False
+        Args:
+            data (list):
+        Returns:
+            True if data is valid UTF-8 encoding else False
     """
     status = None
 
     for item in data:
         binary = bin(item).replace('0b', '').rjust(8, '0')[-8:]
-        if status == None:
+        if status is None:
             if binary.startswith('110'):
                 status = 1
             if binary.startswith('1110'):
@@ -25,7 +27,7 @@ def validUTF8(data):
                 return False
             status -= 1
 
-    if status != None:
+    if status is not None:
         return False
 
     return True
