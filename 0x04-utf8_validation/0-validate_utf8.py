@@ -9,25 +9,25 @@ def validUTF8(data):
         Returns:
             True if data is valid UTF-8 encoding else False
     """
-    status = None
+    count = 0
 
-    for item in data:
-        binary = bin(item).replace('0b', '').rjust(8, '0')[-8:]
-        if status is None:
+    for bit in data:
+        binary = bin(bit).replace('0b', '').rjust(8, '0')[-8:]
+        if count == 0:
             if binary.startswith('110'):
-                status = 1
+                count = 1
             if binary.startswith('1110'):
-                status = 2
+                count = 2
             if binary.startswith('11110'):
-                status = 3
+                count = 3
             if binary.startswith('10'):
                 return False
         else:
             if not binary.startswith('10'):
                 return False
-            status -= 1
+            count -= 1
 
-    if status is not None:
+    if count != 0:
         return False
 
     return True
