@@ -5,7 +5,7 @@ Main file
 
 def rotate_2d_matrix(matrix):
     """
-    Rotate it 90 degrees clockwise
+    Rotate matrix it 90 degrees
     """
     duplicate = matrix[:]
 
