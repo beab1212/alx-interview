@@ -25,7 +25,7 @@ def validUTF8(data):
             elif binary.startswith('1110'):
                 byte_size = 3
             elif binary.startswith('11110'):
-                byte_size = 3
+                byte_size = 4
             elif binary.startswith('10'):
                 return False
         else:
